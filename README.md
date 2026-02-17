@@ -1,5 +1,6 @@
 ## Customer Churn Prediction Web App (Machine Learning + Flask)
-
+![alt text](<Screenshot 2026-02-17 101946.png>)
+![alt text](image.png)
 This project is a Customer Churn Prediction System built using Machine Learning (Random Forest Classifier) and deployed using a Flask Web Application.
 
 It predicts whether a telecom customer will Churn (Leave the service) or Stay, based on important customer features like:
