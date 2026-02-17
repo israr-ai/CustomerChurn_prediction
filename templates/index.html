@@ -1,0 +1,126 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Customer Churn Predictor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex justify-center items-center min-h-screen">
+
+  <div class="bg-gray-800 p-8 rounded-xl shadow-lg w-[450px]">
+    <h1 class="text-2xl font-bold text-center mb-6">Customer Churn Prediction</h1>
+
+    <form action="/predict" method="POST" class="space-y-3">
+
+      <input class="w-full p-2 rounded text-black" name="tenure" placeholder="Tenure (months)" required>
+
+      <input class="w-full p-2 rounded text-black" name="MonthlyCharges" placeholder="Monthly Charges" required>
+
+      <input class="w-full p-2 rounded text-black" name="TotalCharges" placeholder="Total Charges" required>
+
+      <select class="w-full p-2 rounded text-black" name="Contract" required>
+        <option value="">Select Contract</option>
+        <option value="Month-to-month">Month-to-month</option>
+        <option value="One year">One year</option>
+        <option value="Two year">Two year</option>
+      </select>
+
+      <select class="w-full p-2 rounded text-black" name="PaymentMethod" required>
+        <option value="">Select Payment Method</option>
+        <option value="Electronic check">Electronic check</option>
+        <option value="Mailed check">Mailed check</option>
+        <option value="Bank transfer (automatic)">Bank transfer</option>
+        <option value="Credit card (automatic)">Credit card</option>
+      </select>
+
+      <button class="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded font-bold">
+        Predict
+      </button>
+
+    </form>
+
+    <a href="/upload" class="block text-center mt-4 text-blue-400 hover:underline">
+      Upload CSV for Bulk Prediction
+    </a>
+  </div>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Customer Churn Predictor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white flex justify-center items-center min-h-screen">
+
+  <div class="bg-gray-800 p-8 rounded-xl shadow-lg w-[450px]">
+    <h1 class="text-2xl font-bold text-center mb-6">Customer Churn Prediction</h1>
+
+    <form action="/predict" method="POST" class="space-y-3">
+
+      <!-- Tenure -->
+      <input id="tenure" class="w-full p-2 rounded text-black"
+        name="tenure" placeholder="Tenure (months)" required>
+
+      <!-- Monthly Charges -->
+      <input id="monthly" class="w-full p-2 rounded text-black"
+        name="MonthlyCharges" placeholder="Monthly Charges" required>
+
+      <!-- Total Charges -->
+      <input id="total" class="w-full p-2 rounded text-black"
+        name="TotalCharges" placeholder="Total Charges (Auto Calculated)" required readonly>
+
+      <!-- Contract -->
+      <select class="w-full p-2 rounded text-black" name="Contract" required>
+        <option value="">Select Contract</option>
+        <option value="Month-to-month">Month-to-month</option>
+        <option value="One year">One year</option>
+        <option value="Two year">Two year</option>
+      </select>
+
+      <!-- Payment Method -->
+      <select class="w-full p-2 rounded text-black" name="PaymentMethod" required>
+        <option value="">Select Payment Method</option>
+        <option value="Electronic check">Electronic check</option>
+        <option value="Mailed check">Mailed check</option>
+        <option value="Bank transfer (automatic)">Bank transfer</option>
+        <option value="Credit card (automatic)">Credit card</option>
+      </select>
+
+      <button class="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded font-bold">
+        Predict
+      </button>
+
+    </form>
+
+    <a href="/upload" class="block text-center mt-4 text-blue-400 hover:underline">
+      Upload CSV for Bulk Prediction
+    </a>
+  </div>
+
+  <!-- Auto Calculator Script -->
+  <script>
+    const tenureInput = document.getElementById("tenure");
+    const monthlyInput = document.getElementById("monthly");
+    const totalInput = document.getElementById("total");
+
+    function calculateTotal() {
+      let tenure = parseFloat(tenureInput.value);
+      let monthly = parseFloat(monthlyInput.value);
+
+      if (!isNaN(tenure) && !isNaN(monthly)) {
+        totalInput.value = (tenure * monthly).toFixed(2);
+      } else {
+        totalInput.value = "";
+      }
+    }
+
+    tenureInput.addEventListener("input", calculateTotal);
+    monthlyInput.addEventListener("input", calculateTotal);
+  </script>
+
+</body>
+</html>

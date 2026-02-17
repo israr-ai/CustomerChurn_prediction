@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Upload CSV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex justify-center items-center min-h-screen">
+
+  <div class="bg-gray-800 p-8 rounded-xl shadow-lg w-[500px] text-center">
+    <h1 class="text-2xl font-bold mb-4">Upload CSV File</h1>
+
+    <form action="/upload_csv" method="POST" enctype="multipart/form-data" class="space-y-4">
+      <input type="file" name="file" required class="w-full p-2 bg-gray-700 rounded">
+      <button class="w-full bg-green-600 hover:bg-green-700 p-2 rounded font-bold">
+        Upload & Predict
+      </button>
+    </form>
+
+    {% if total %}
+    <div class="mt-6 bg-gray-700 p-4 rounded">
+      <p>Total Customers: <b>{{ total }}</b></p>
+      <p>Churn Customers: <b class="text-red-400">{{ churn_count }}</b></p>
+      <p>Stay Customers: <b class="text-green-400">{{ stay_count }}</b></p>
+    </div>
+    {% endif %}
+
+    <a href="/" class="block mt-6 text-blue-400 hover:underline">Back to Home</a>
+  </div>
+
+</body>
+</html>
